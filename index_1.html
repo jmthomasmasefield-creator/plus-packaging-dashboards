@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plus Packaging — Dashboards</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1f3c;
+      --navy-mid: #162e54;
+      --gold: #c9a84c;
+      --white: #f5f5f0;
+      --grey: #8a9bb5;
+    }
+
+    body {
+      background: var(--navy);
+      font-family: 'Barlow', sans-serif;
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+      pointer-events: none;
+    }
+
+    .accent-bar {
+      width: 60px;
+      height: 4px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .subtitle { font-size: 15px; color: var(--grey); letter-spacing: 0.5px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 32px 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-3px); }
+    .card:hover::after { width: 100%; }
+
+    .card-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .card-desc { font-size: 14px; color: var(--grey); line-height: 1.6; flex: 1; }
+
+    .card-arrow { font-size: 20px; color: var(--gold); align-self: flex-end; transition: transform 0.2s; }
+    .card:hover .card-arrow { transform: translateX(4px); }
+
+    footer {
+      margin-top: 56px;
+      font-size: 12px;
+      color: rgba(138,155,181,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-text">Plus Packaging</div>
+    <div class="accent-bar"></div>
+    <h1>Sales <span>Dashboards</span></h1>
+    <p class="subtitle">Internal tools — select a dashboard to open</p>
+  </header>
+
+  <div class="cards">
+
+    <a class="card" href="personal/ppj_sales_dashboard.html">
+      <span class="card-tag">Personal</span>
+      <div class="card-title">PPJ Sales Dashboard</div>
+      <p class="card-desc">Monthly performance across 36 customer accounts. Bar chart and sortable breakdown table. 2026 targets loaded.</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <a class="card" href="team_dashboard_4.html">
+      <span class="card-tag">Team</span>
+      <div class="card-title">Team Sales Dashboard</div>
+      <p class="card-desc">Overview for all six salespeople. Revenue, targets, and activity metrics — Calls, Visits, Deals, Appointments, New Customers.</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+    <a class="card" href="plus_packaging_dashboard_3.html">
+      <span class="card-tag">Summary</span>
+      <div class="card-title">Monthly Summary</div>
+      <p class="card-desc">High-level tracking dashboard. Target vs invoiced vs tracking, with working days progress and needed-per-day calculation.</p>
+      <span class="card-arrow">→</span>
+    </a>
+
+  </div>
+
+  <footer>Plus Packaging &mdash; Internal use only</footer>
+
+</body>
+</html>
